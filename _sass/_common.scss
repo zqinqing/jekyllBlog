@@ -1,0 +1,508 @@
+// [(Layout)___________________________________________________________________________________________]
+// // Layout
+
+header.header,footer.footer {
+    z-index: 10;
+    color: #333;
+
+
+    webkit-box-shadow: 0 0 14px #cacbcb;
+      -moz-box-shadow: 0 0 14px #cacbcc;
+           box-shadow: 0 0 14px #cacbcc;
+}
+
+
+header.header {
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    margin: 0 auto 20px;
+    text-align: left;
+    font-family: $root-font-family;
+    
+    .logo-wrap {
+        width: 40px;
+        height: 40px;
+        overflow: hidden;
+        float: left;
+        margin: 20px 0 0 20px;
+        img {
+            height: 100%;
+        }
+    }
+
+    .navbar {
+        margin: 0;
+        border-left: none;
+        border-right: none;
+    }
+
+    .website-title {
+        width: 516px;
+        height: 80px;
+        float: left;
+        padding: 0 2px;
+        font: normal 26px / 80px '楷体';
+
+        // 超出文本隐藏文字
+        overflow: hidden;
+        text-overflow:ellipsis;
+        white-space: nowrap;
+    }
+
+    a {
+        transition: all .3s linear;
+        color: #333;
+        cursor: pointer;
+    }
+
+    a:hover {
+        color: #ff530a;
+    }
+
+}
+
+footer.footer {
+    padding: 10px 0;
+    background: #f8f8f8;
+    margin: 20px auto 0px;
+    font-size: 14px;
+    text-align: center;
+    color: #2b2929;
+    font-family: $root-font-family;
+    transition: all .3s linear;
+
+    p {
+        height: 26px;
+        line-height: 26px;
+    }
+}
+
+footer.footer a{
+  color: #555;
+}
+
+footer.footer a:hover {
+    color: #ff530a;
+}
+
+//
+// Styles for managing the structural hierarchy of the site.
+// 管理站点结构层次结构的样式。
+main.container {
+    overflow: hidden;
+    min-height: 38rem;
+    margin: 0 auto;
+    position: relative;
+
+    webkit-box-shadow: 0 0 14px #cacbcb;
+      -moz-box-shadow: 0 0 14px #cacbcc;
+           box-shadow: 0 0 14px #cacbcc;
+
+    p {
+        margin-top: 0;
+        margin-bottom: .5rem;
+        font-size: 16px;
+        line-height: 2;
+        text-align: justify;
+
+        a {
+            font: normal 14px / 40px $root-font-family;
+            color: #333;
+        }
+    }
+
+    li {
+        a {
+            font: normal 14px / 40px $root-font-family;
+            color: #333;
+        }
+    }
+
+
+    
+    ul li,ol li {
+        list-style: normal;
+        font-size: 14px;
+        padding-left: 20px;
+    }
+
+    ::selection {
+        background:#c4e8b5; 
+        color: #069;
+    }
+
+    ::-moz-selection {
+        background:#c4e8b5; 
+        color: #069;
+    }
+
+    ::-webkit-selection {
+        background:#c4e8b5; 
+        color: #069;
+    }
+}
+
+main.container.main {
+    background: #fff;
+}
+
+
+ul.posts {
+    list-style-type: none;
+    margin-bottom: 2em;
+    overflow-y: auto;
+}
+
+ul.posts li {
+    white-space:nowrap;
+    height: 40px;
+    padding: 0 0 0 24px;
+    background: url('../media/images/txt-list.png') no-repeat left center;
+    margin-bottom: 10px;
+    font: normal 18px / 40px $root-font-family;
+}
+
+ul.posts .ban-bg {
+    background: none;
+    color: #63c0d4;
+}
+
+ul.posts a {
+    color: #333;
+}
+
+
+@media (max-width: 480px) {
+    blockquote {
+       margin: 0;
+    }
+}
+
+
+// canvas 设置网站背景 
+
+#canvas {
+    position: fixed; top: 0; bottom: 0; left: 0; right: 0; margin: auto; 
+    width: 100%; 
+    height: 100%; 
+    z-index: -1; 
+    /*
+    background: #2e3131;
+     */ 
+}
+
+// 底部的花
+.flowers {
+    position: fixed;
+    left: 40px;
+    bottom: -1px;
+    width: 150px;
+    height: 212px;
+    background: url('http://oxoz3bzmd.bkt.clouddn.com/17-10-12/65107071.jpg') no-repeat;
+    z-index: 11;
+     // 动画
+    -webkit-animation: ball-x 3s linear 2s infinite;
+    -moz-animation: ball-x 3s linear 2s infinite;
+    animation: ball-x 3s linear 2s infinite;
+    -webkit-transform-origin: bottom center;
+    -moz-transform-origin: bottom center;
+    transform-origin: bottom center;
+}
+
+// 底部的猫
+.move-cat {
+    position: fixed;
+    right: 60px;
+    bottom: -1px;
+    width: 168px;
+    height: 215px;
+    background: url('http://oxoz3bzmd.bkt.clouddn.com/17-10-12/27200959.jpg') no-repeat;
+    cursor:move;
+    z-index: 11;
+}
+
+// 公告
+.notice {
+    width: 100%;
+    height: 60px;
+    text-align: left;
+    font: normal 22px / 60px '楷体';
+
+    background-image: -webkit-linear-gradient(left,blue,#66ffff 10%,#cc00ff 20%,#CC00CC 30%, #CCCCFF 40%, #00FFFF 50%,#CCCCFF 60%,#CC00CC 70%,#CC00FF 80%,#66FFFF 90%,blue 100%);
+    -webkit-text-fill-color: transparent;/* 将字体设置成透明色 */
+    -webkit-background-clip: text;/* 裁剪背景图，使文字作为裁剪区域向外裁剪 */
+    -webkit-background-size: 200% 100%; 
+    -webkit-animation: masked-animation 4s linear infinite;
+
+    
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Chrome/Safari/Opera */
+    -khtml-user-select: none; /* Konqueror */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none; /* Non-prefixed version, currently not supported by any browser */
+}
+
+
+//copyright 版权
+div.copyright {
+
+    margin: 10px 0;
+    padding: 10px 20px;
+    line-height: 1;
+    border-radius: 5px;
+    background: #f5f5f5;
+
+    p {
+        font-size: 12px;
+    }
+}
+
+// 返回顶部
+.back-top {
+    display: block;
+    position: fixed;
+    right: 20px;
+    bottom: 220px;
+    width: 48px;
+    height: 48px;
+    border-radius: 24px;
+    box-shadow: 0px 1px 8px 1.5px rgba(0, 0, 0, 0.35), 0px 20px 70px 8px rgba(0, 0, 0, 0.25);
+    cursor: pointer;
+    -webkit-transition: background 500ms;
+    -moz-transition: background 500ms;
+    -ms-transition: background 500ms;
+    -o-transition: background 500ms;
+    transition: background 500ms;
+    -webkit-user-select: none;
+    -webkit-touch-callout: none;
+    background: url('../media/images/back-top1.png') no-repeat center;
+
+    .hint {
+        visibility: hidden;
+        width: 100px;
+        height: 28px;
+        position: relative;
+        top: 10px;
+        left: -80px;
+        cursor: pointer;
+        color: rgba(0,0,0,0.5);
+        background: rgba(255,255,255,0.8);
+        box-shadow: 0px 1px 8px 1.5px rgba(0,0,0,0.35), 0px 20px 70px 8px rgba(0,0,0,0.25);
+        -webkit-transition: all 500ms;
+        -moz-transition: all 500ms;
+        -ms-transition: all 500ms;
+        -o-transition: all 500ms;
+        transition: all 500ms;
+        font-size: 12px;
+        line-height: 28px;
+        text-align: center;
+    }
+    .hint:after {
+        content: '';
+        display: inline-block;
+        width: 0;
+        height: 0;
+        border-top: 5px solid transparent;
+        border-left: 5px solid rgba(255, 255, 255, 0.8);;
+        border-bottom: 5px solid transparent;
+        position: absolute;
+        top: 50%;
+        right: -5px;
+        margin-top: -5px;
+        -webkit-filter: drop-shadow(0 1px 5px rgba(0,0,0,.5));
+        -moz-filter: drop-shadow(0 1px 5px rgba(0,0,0,.5));
+        -ms-filter: drop-shadow(0 1px 5px rgba(0,0,0,.5));
+        -o-filter: drop-shadow(0 1px 5px rgba(0,0,0,.5));
+        filter: drop-shadow(0 1px 5px rgba(0,0,0,.5));
+    }
+}
+
+
+.back-top:hover .hint {
+    left: -125px;
+    visibility: visible;
+}
+
+.back-top:hover {
+    background: rgba(255, 255, 255, 0.8) url('../media/images/back-top2.png') no-repeat center;
+}
+
+// search 搜索
+.search-form {
+    width: 100%;
+    height: 36px;
+    margin: 8px 0 0 0;
+    float: right;
+
+    //  input 框的placeholder 字体颜色
+    input::-webkit-input-placeholder {
+        color: #333;
+    }
+
+    textarea::-webkit-input-placeholder {
+        color: #333;
+    }
+
+    input::-webkit-input-speech-button {
+        display: none
+    }
+
+    input.search {
+        width: 100%;
+        height: 100%;
+        border: none;
+        background: transparent;
+        padding: 0 0 0 12px;
+        font: normal 18px / 38px $root-font-family;
+    }
+}
+
+.meta {
+    width: 100%;
+    height: 24px;
+    font: normal 12px / 24px $root-font-family;
+    text-align: left;
+    color: #888;
+    margin-bottom: .5rem;
+}
+
+
+// 顶部加载进度
+.pace .pace-progress {
+    background: #49dad7;
+    height: 3px
+}
+.pace .pace-progress-inner {
+   // box-shadow: 0 0 10px #f8b6bf, 0 0 5px #f8b6bf
+    box-shadow: 0 0 10px #49dad7, 0 0 5px #49dad7
+}
+
+.pace .pace-activity {
+    border-top-color: #49dad7;
+    border-left-color: #49dad7
+}
+
+// logo 
+#logo {
+    padding: 4px 15px;
+
+    img {
+        margin: 0;
+    }
+}
+
+// headline  标题 顶部
+a#headline {
+
+} 
+
+/*音乐播放 */
+#music {
+    width: 50px;
+    height: 50px;
+    position: fixed;
+    bottom: 10%;
+    z-index: 1000;
+    cursor: pointer;
+    animation: rotate 3s infinite linear;
+    -webkit-animation: rotate 3s infinite linear;
+    background: url('../media/images/music.png') no-repeat center;
+}
+
+#music.pause{
+    animation: none;
+}
+
+@keyframes rotate {
+    0%{
+        transform: rotate(0deg);
+    }
+    100%{
+        transform: rotate(360deg);
+    }
+}
+@-webkit-keyframes rotate {
+    0%{
+        -webkit-transform: rotate(0deg);
+    }
+    100%{
+        -webkit-transform: rotate(360deg);
+    }
+}
+
+
+/* animation */
+@keyframes ball-x {
+0% { transform:rotate(0deg);}
+25% { transform:rotate(5deg); }
+50% { transform:rotate(0deg);}
+75% { transform:rotate(-5deg);}
+100% { transform:rotate(0deg);} 
+}
+@-webkit-keyframes ball-x {
+0% { -webkit-transform:rotate(0deg);}
+25% { -webkit-transform:rotate(5deg); }
+50% { -webkit-transform:rotate(0deg);}
+75% { -webkit-transform:rotate(-5deg);}
+100% { -webkit-transform:rotate(0deg);}
+}
+@-moz-keyframes ball-x {
+0% { -moz-transform:rotate(0deg);}
+25% { -moz-transform:rotate(5deg); }
+50% { -moz-transform:rotate(0deg);}
+75% { -moz-transform:rotate(-5deg);}
+100% { -moz-transform:rotate(0deg);}
+}
+
+@keyframes masked-animation {
+    0% {
+        background-position: 0  0;
+    }
+    100% {
+        background-position: -100%  0;
+    }
+}
+
+
+
+
+// 媒体查询
+
+// iphone6+ 竖屏
+@media only screen and (max-width: 480px){
+    // 底部的花
+    .flowers {
+        display: none;
+    }
+    // 底部的猫
+    .move-cat {
+        display: none;
+    }
+
+    a#headline {
+        width: 12rem;
+        // 超出文本隐藏文字
+        overflow: hidden;
+        text-overflow:ellipsis;
+        white-space: nowrap;
+    }
+
+    body {
+        color: #515151;
+        -webkit-text-size-adjust: 100%;
+        -ms-text-size-adjust: 100%;
+        box-sizing: border-box;
+        padding: 55px 0px 0px;
+    }
+}
+
+// 小于 1000像素
+@media only screen and (max-width: 1200px) {
+    // 搜索框
+    .search-form {
+        display: none;
+    }
+}

@@ -1,0 +1,683 @@
+@charset "utf-8";
+// [(Body resets begin)___________________________________________________________________________________________]
+* {
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+// 内外边距通常让各个浏览器样式的表现位置不同
+html, body, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, fieldset, legend, input, textarea, p, blockquote, th, td, hr, button, article, aside, details, figcaption, figure, footer, header, group, menu, nav, section {
+    margin: 0;
+    padding: 0;
+}
+
+// 要注意表单元素并不继承父级 font 的问题 
+body, button, input, select, textarea {
+   font: 500 14px/1.8 'Hiragino Sans GB', sans-serif;
+}
+
+html {
+    color: #555;
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+
+    font-family: $root-font-family;
+    font-size: $root-font-size;
+    line-height: $root-line-height;
+
+    @media (min-width: $large-breakpoint) {
+      font-size: $large-font-size;
+    }
+}
+
+body {
+  color: $body-color;
+  // background-color: $body-bg;
+  -webkit-text-size-adjust: 100%;
+      -ms-text-size-adjust: 100%;
+
+  box-sizing: border-box;
+  padding: 100px 0px 0px;
+}
+
+
+
+h1, h2, h3, h4, h5, h6{
+    font-weight: 500;
+    font-weight: 800\9;
+
+    margin-bottom: .5rem;
+    line-height: 1.25;
+    color: #313131;
+    text-rendering: optimizeLegibility;
+}
+
+h1 {
+  font-size: 2rem;
+}
+
+h2 {
+  margin-top: 1rem;
+  font-size: 1.5rem;
+}
+
+h3 {
+  margin-top: 1.5rem;
+  font-size: 1.25rem;
+}
+
+h4, h5, h6 {
+  margin-top: 1rem;
+  font-size: 1rem;
+}
+
+// 重设 HTML5 标签, IE 需要在 js 中 createElement(TAG) 
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+    display: block;
+}
+
+// HTML5 媒体文件跟 img 保持一致
+audio, canvas, video {
+    display: inline-block;
+    *display: inline;
+    *zoom: 1;
+}
+
+
+
+
+// 去掉各Table  cell 的边距并让其边重合 
+table {
+    width: 100%;
+    font-size: 85%;
+    border: 1px solid #e5e5e5;
+    border-collapse: collapse;
+    border-spacing: 0;
+    margin-bottom: 1rem;
+    background: #f9f9f9;
+}
+
+td,th {
+    padding: .25rem .5rem;
+    border: 1px solid #bfbbbb;
+}
+
+// IE bug fixed: th 不继承 text-align
+th {
+    text-align: inherit;
+}
+
+dt {
+  font-weight: bold;
+}
+
+dd {
+  margin-bottom: .5rem;
+}
+
+tbody tr:nth-child(odd) td,
+tbody tr:nth-child(odd) th {
+  background-color: #f9f9f9;
+}
+
+// 去除默认边框 
+fieldset, img {
+    border: 0;
+}
+
+// ie6 7 8(q) bug 显示为行内表现 
+iframe {
+    display: block;
+}
+
+// 块/段落引用 
+blockquote {
+    /*
+    margin: 1em 4em 1em 2em;
+    padding: 0.6em 1em;
+    background: #f1f1f1;
+    */
+    margin: 1em 0em 1em 0em;
+    padding: .8em 1em;
+    background: #f1f1f1;
+/*
+    padding: .5rem 1rem;
+    margin: .8rem 0;
+    color: #7a7a7a;
+    border-left: .25rem solid #e5e5e5;
+
+    p:last-child {
+        margin-bottom: 0;
+    }
+
+    @media (min-width: 30em) {
+        padding-right: 5rem;
+        padding-left: 1.25rem;
+    }
+*/
+}
+blockquote blockquote {
+    padding: 0 0 0 1em;
+    margin-left: 2em;
+    border-left: 0.4em solid #ddd;
+}
+
+// Firefox 以外，元素没有下划线，需添加 
+acronym, abbr {
+    border-bottom: 1px dotted;
+    font-variant: normal;
+}
+
+// 添加鼠标问号，进一步确保应用的语义是正确的（要知道，交互他们也有洁癖，如果你不去掉，那得多花点口舌）
+abbr {
+    cursor: help;
+    font-size: 85%;
+    font-weight: bold;
+    color: #555;
+    text-transform: uppercase;
+
+    &[title] {
+        cursor: help;
+        border-bottom: 1px dotted #e5e5e5;
+    }
+}
+
+// 一致的 del 样式 
+del {
+    text-decoration: line-through;
+}
+
+address, caption, cite, code, den, em, th, var {
+    font-style: normal;
+    font-weight: 500;
+}
+
+// 去掉列表前的标识, li 会继承，大部分网站通常用列表来很多内容，所以应该当去
+ul, ol {
+    list-style: none;
+}
+
+// 对齐是排版最重要的因素, 别让什么都居中 
+caption, th {
+    text-align: left;
+}
+
+q:before, q:after {
+    content: '';
+}
+
+// 统一上标和下标 
+sub, sup {
+    font-size: 75%;
+    line-height: 0;
+    position: relative;
+    vertical-align: text-top\9;
+}
+:root sub, :root sup{
+    vertical-align: baseline; /* for ie9 and other mordern browsers */
+}
+sup {
+    top: -0.5em;
+}
+sub {
+    bottom: -0.25em;
+}
+
+// No `:visited` state is required by default (browsers will use `a`)
+a {
+    color: $link-color;
+    text-decoration: none;
+    
+    // 让链接在 hover 状态下显示下划线 
+    // `:focus` is linked to `:hover` for basic accessibility
+    &:hover,
+    &:focus {
+        text-decoration: underline;
+    }
+
+    strong {
+        color: inherit;
+    }
+}
+a:hover {
+    text-decoration: none;
+    cursor: pointer;
+}
+
+// 默认不显示下划线，保持页面简洁 
+ins, a {
+    text-decoration: none;
+}
+
+/* 专名号：虽然 u 已经重回 html5 Draft，但在所有浏览器中都是可以使用的，
+ * 要做到更好，向后兼容的话，添加 class="typo-u" 来显示专名号
+ * 关于 <u> 标签：http://www.whatwg.org/specs/web-apps/current-work/multipage/text-level-semantics.html#the-u-element
+ * 被放弃的是 4，之前一直搞错 http://www.w3.org/TR/html401/appendix/changes.html#idx-deprecated
+ * 一篇关于 <u> 标签的很好文章：http://html5doctor.com/u-element/ 
+ */
+u, .typo-u {
+    text-decoration: underline;
+}
+
+// 标记，类似于手写的荧光笔的作用 
+mark {
+    background: #fffdd1;
+}
+
+// 代码片断 
+pre, code {
+    font-family: "Courier New", Courier, monospace;
+    font-family: $code-font-family;
+    background-color: transparent;
+    color: inherit;
+    padding: 0;
+    font-size: 100%;
+}
+pre {
+    border: 1px solid #ddd;
+    border-left-width: 0.4em;
+    background: #fbfbfb;
+    padding: 10px;
+
+    margin-top: 0;
+    margin-bottom: 1rem;
+    overflow: auto;
+}
+
+code {
+  // padding: .25em .5em;
+  font-size: 85%;
+  color: $code-color;
+  background-color: #f9f9f9;
+  border-radius: 3px;
+}
+
+
+// 底部印刷体、版本等标记 
+small {
+    font-size: 12px;
+    color: #888;
+}
+
+strong {
+  color: #303030;
+}
+
+ul, ol, dl {
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+
+img {
+  display: block;
+  max-width: 100%;
+  margin: 0 0 1rem;
+  border-radius: 5px;
+}
+
+input {
+    outline:none;
+}
+
+hr {
+    position: relative;
+    margin: .5rem 0;
+    border: 0;
+    border-top: 1px solid #fff;
+    border-bottom: 1px solid #fff;
+}
+
+// -- 清除浮动 ------------------------------------------------------- 
+.clearfix:before, .clearfix:after {
+    visibility: hidden;
+    display: block;
+    font-size: 0;
+    content: " ";
+    clear: both;
+    height: 0;
+}
+
+.clearfix:after {
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden
+}
+
+.clearfix {
+    *zoom: 1;
+}
+
+/* 保证块/段落之间的空白隔行 */
+.typo p, .typo pre, .typo ul, .typo ol, .typo dl, .typo form, .typo hr, .typo table,
+.typo-p, .typo-pre, .typo-ul, .typo-ol, .typo-dl, .typo-form, .typo-hr, .typo-table {
+    margin-bottom: 1em;
+}
+
+
+
+/* 标题应该更贴紧内容，并与其他块区分，margin 值要相应做优化 */
+.typo h1, .typo h2, .typo h3, .typo h4, .typo h5, .typo h6,
+.typo-h1, .typo-h2, .typo-h3, .typo-h4, .typo-h5, .typo-h6 {
+    margin-bottom: 0.4em;
+    line-height: 1.5;
+}
+.typo h1, .typo-h1 {
+    font-size: 1.8em;
+}
+.typo h2, .typo-h2 {
+    font-size: 1.6em;
+}
+.typo h3, .typo-h3 {
+    font-size: 1.4em;
+}
+.typo h4, .typo-h4 {
+    font-size: 1.2em;
+}
+.typo h5, .typo h6, .typo-h5, .typo-h6 {
+    font-size: 1em;
+}
+
+/* 在文章中，应该还原 ul 和 ol 的样式 */
+.typo ul, .typo-ul {
+    margin-left: 1.3em;
+    list-style: disc;
+}
+.typo ol, .typo-ol {
+    list-style: decimal;
+    margin-left: 1.9em;
+}
+.typo li ul, .typo li ol, .typo-ul ul, .typo-ul ol, .typo-ol ul, .typo-ol ol {
+    margin-top: 0;
+    margin-bottom: 0;
+    margin-left: 2em;
+}
+.typo li ul, .typo-ul ul, .typo-ol ul {
+    list-style: circle;
+}
+
+/* 同 ul/ol，在文章中应用 table 基本格式 */
+.typo table th, .typo table td, .typo-table th, .typo-table td {
+    border: 1px solid #ddd;
+    padding: 5px 10px;
+}
+.typo table th, .typo-table th {
+    background: #fbfbfb;
+}
+.typo table thead th, .typo-table thead th {
+    background: #f1f1f1;
+}
+
+/* TODO: 供着重号使用 */
+.typo-em, .typo em {
+    font-weight: 700;
+}
+
+/* TODO: 供首字下沉使用 */
+.typo-first{
+
+}
+
+// [(Body resets end  )___________________________________________________________________________________________]
+
+
+
+
+// Pygments via Jekyll
+.highlight {
+  // padding: 1rem;
+  margin-bottom: 1rem;
+  font-size: .8rem;
+  line-height: 1.4;
+  background-color: #f9f9f9;
+
+  pre {
+    margin-bottom: 0;
+    overflow-x: auto;
+  }
+
+  .lineno {
+    display: inline-block; // Ensures the null space also isn't selectable
+    padding-right: .75rem;
+    padding-left: .25rem;
+    color: #999;
+    // Make sure numbers aren't selectable
+    -webkit-user-select: none;
+       -moz-user-select: none;
+            user-select: none;
+  }
+}
+
+
+// Gist via GitHub Pages
+// .gist .gist-file {
+//   font-family: Menlo, Monaco, "Courier New", monospace !important;
+// }
+// .gist .markdown-body {
+//   padding: 15px;
+// }
+// .gist pre {
+//   padding: 0;
+//   background-color: transparent;
+// }
+// .gist .gist-file .gist-data {
+//   font-size: .8rem !important;
+//   line-height: 1.4;
+// }
+// .gist code {
+//   padding: 0;
+//   color: inherit;
+//   background-color: transparent;
+//   border-radius: 0;
+// }
+
+
+// [(Masthead)___________________________________________________________________________________________]
+// Masthead
+//
+// Super small header above the content for site name and short description.
+// 超小标题为网站名称和简短描述。
+
+.masthead {
+  padding-top:    1rem;
+  padding-bottom: 1rem;
+  margin-bottom: 3rem;
+}
+
+.masthead-title {
+  margin-top: 0;
+  margin-bottom: 0;
+  color: $gray-4;
+
+  a {
+    color: inherit;
+  }
+
+  small {
+    font-size: 75%;
+    font-weight: 400;
+    opacity: .5;
+  }
+}
+
+
+
+// [(Messages)___________________________________________________________________________________________]
+// // Messages
+//
+// Show alert messages to users. You may add it to single elements like a `<p>`,
+// 向用户显示警告消息。你可以把它添加到单个元素，比如a p
+// or to a parent if there are multiple elements to show.
+// 如果有多个元素可以显示，则可以对父类进行说明。
+
+.message {
+  margin-bottom: 1rem;
+  padding: 1rem;
+  color: #717171;
+  background-color: #f9f9f9;
+}
+
+
+// [(Pagination)___________________________________________________________________________________________]
+// // Pagination
+//
+// Super lightweight (HTML-wise) blog pagination. `span`s are provide for when
+// 超级轻量级(html)博客分页。跨度s提供了
+// there are no more previous or next posts to show.
+// 没有更多的前或下一篇文章要展示。
+
+.pagination {
+  width: 100%;
+  overflow: hidden; // clearfix
+  margin: 0 auto;
+  color: #ccc;
+  text-align: center;
+}
+
+// Pagination items can be `span`s or `a`s
+.pagination-item {
+  display: block;
+  padding: 1rem;
+  border: solid #eee;
+  border-width: 1px 0;
+
+  &:first-child {
+    margin-bottom: -1px;
+  }
+}
+
+// Only provide a hover state for linked pagination items
+a.pagination-item:hover {
+  background-color: #f5f5f5;
+}
+
+@media (min-width: 30em) {
+  .pagination {
+    margin: 0 auto;
+  }
+
+  .pagination-item {
+    float: left;
+    width: 50%;
+    border-width: 1px;
+
+    &:first-child {
+      margin-bottom: 0;
+      border-top-left-radius:    4px;
+      border-bottom-left-radius: 4px;
+    }
+    &:last-child {
+      margin-left: -1px;
+      border-top-right-radius:    4px;
+      border-bottom-right-radius: 4px;
+    }
+  }
+}
+
+
+
+
+// Markdown footnotes
+//
+// See the example content post for an example.
+
+// Footnote number within body text
+a[href^="#fn:"],
+// Back to footnote link
+a[href^="#fnref:"] {
+  display: inline-block;
+  margin-left: .1rem;
+  font-weight: bold;
+}
+
+// List of footnotes
+.footnotes {
+  margin-top: 2rem;
+  font-size: 85%;
+}
+
+// Custom type
+//
+// Extend paragraphs with `.lead` for larger introductory text.
+
+.lead {
+  font-size: 1.25rem;
+  font-weight: 300;
+}
+
+
+
+
+// [(Posts and pages)___________________________________________________________________________________________]
+// Posts and pages
+//
+// Each post is wrapped in `.post` and is used on default and post layouts. Each
+// 每个帖子都被包好了。在默认和post布局中使用post。每一个
+// page is wrapped in `.page` and is only used on the page layout.
+// 页面被包装好了。页面只在页面布局中使用。
+
+.page,
+.post {
+  margin-bottom: 4em;
+
+  li + li {
+    margin-top: .25rem;
+  }
+}
+
+// Blog post or page title
+.page-title,
+.post-title,
+.post-title a {
+  color: #303030;
+}
+.page-title,
+.post-title {
+  margin-top: 0;
+}
+
+// Meta data line below post title
+.post-date {
+  display: block;
+  margin-top: -.5rem;
+  margin-bottom: 1rem;
+  color: #9a9a9a;
+}
+
+
+// Related posts
+.related {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  margin-bottom: 2rem;
+  border-top: 1px solid #eee;
+  border-bottom: 1px solid #eee;
+}
+
+.related-posts {
+  padding-left: 0;
+  list-style: none;
+
+  h3 {
+    margin-top: 0;
+  }
+
+  li {
+    small {
+      font-size: 75%;
+      color: #999;
+    }
+
+    a:hover {
+      color: #268bd2;
+      text-decoration: none;
+
+      small {
+        color: inherit;
+      }
+    }
+  }
+}

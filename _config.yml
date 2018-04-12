@@ -1,0 +1,8 @@
+# Setup
+baseurl: ""
+markdown: kramdown
+url: http://www.zqinqing.com
+
+# pages
+paginate: 20
+#paginate_path: "page:num"
