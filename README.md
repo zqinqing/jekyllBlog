@@ -1,2 +1,2 @@
 # jekyllBlog
-I
+I design a blog based on jekyll.
